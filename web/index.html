@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="استراحة ومطعم كرم التين - النابوع، الزبداني، ريف دمشق، سوريا. جلسات صيفية بين أشجار التين وصالة شتوية مغلقة مع مدفأة دافئة وأشهى المشاوي السورية.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="كرم التين">
+  <link rel="apple-touch-icon" href="logo.webp">
+
+  <!-- Circular Web Favicon -->
+  <link rel="icon" type="image/webp" href="logo.webp"/>
+
+  <title>استراحة ومطعم كرم التين | الزبداني - النابوع</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0F281E;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+    }
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #0F281E;
+      z-index: 99999;
+      transition: opacity 0.5s ease-out;
+    }
+    .logo-container {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid #D4A373;
+      box-shadow: 0 0 25px rgba(212, 163, 115, 0.4);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: pulse-glow 2s infinite ease-in-out;
+      background-color: #1B4332;
+    }
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .restaurant-title {
+      color: #FFFFFF;
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 20px;
+      letter-spacing: 0.5px;
+    }
+    .restaurant-subtitle {
+      color: #D4A373;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .spinner {
+      margin-top: 24px;
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(212, 163, 115, 0.2);
+      border-radius: 50%;
+      border-top-color: #D4A373;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse-glow {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(212, 163, 115, 0.3); }
+      50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(212, 163, 115, 0.6); }
+    }
+  </style>
+
+  <script>
+    // Prevent CanvasKit WebGL context lost crashes
+    window.addEventListener('webglcontextlost', function (event) {
+      event.preventDefault();
+      console.warn('WebGL context lost event caught and prevented.');
+    }, false);
+  </script>
+</head>
+<body>
+  <!-- Preloader Screen with Circular Logo -->
+  <div id="loading-screen">
+    <div class="logo-container">
+      <img src="logo.webp" alt="كرم التين">
+    </div>
+    <div class="restaurant-title">استراحة ومطعم كرم التين</div>
+    <div class="restaurant-subtitle">الزبداني - النابوع</div>
+    <div class="spinner"></div>
+  </div>
+
+  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var loader = document.getElementById('loading-screen');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(function() { loader.remove(); }, 500);
+        }
+      }, 800);
+    });
+  </script>
+</body>
+</html>
